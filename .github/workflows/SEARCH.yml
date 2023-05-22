@@ -1,0 +1,19 @@
+name: TEST_SLOT
+
+on:
+  schedule:
+    - cron:  '*/10 05-22 * * *'
+  workflow_dispatch:
+
+env:
+    TELEGRAM: ${{ secrets.TELEGRAM }}
+    CHAT_ID: ${{ secrets.CHAT_ID }}
+
+jobs:
+  UPDATE-ALL:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: TEST_SLOT
+        if: always()
+        run:  ./doctobot.ps1
