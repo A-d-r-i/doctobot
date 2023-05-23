@@ -11,11 +11,11 @@ $ie = New-Object -ComObject 'internetExplorer.Application'
 $ie.Visible= $true # Make it visible
 
 $ie.Navigate("https://www.doctolib.fr/availabilities.json?start_date=$date&visit_motive_ids=$visit_motive_ids&agenda_ids=$agenda_ids&insurance_sector=public&practice_ids=$practice_ids")
-While ($ie.Busy -eq $true) {Start-Sleep -Seconds 2;}
+While ($ie.Busy -eq $true) {Start-Sleep -Seconds 3;}
 
-$app = Get-Process | ?{$_.MainWindowHandle -eq $ie.hwnd}
-[Microsoft.VisualBasic.Interaction]::AppActivate($app.Id)
-Start-Sleep -Seconds 2;
+#$app = Get-Process | ?{$_.MainWindowHandle -eq $ie.hwnd}
+#[Microsoft.VisualBasic.Interaction]::AppActivate($app.Id)
+#Start-Sleep -Seconds 2;
 [System.Windows.Forms.SendKeys]::SendWait('{ENTER}')
 
 ### LOCATE DOWNLOAD FOLDER
