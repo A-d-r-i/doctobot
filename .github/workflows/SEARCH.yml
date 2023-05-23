@@ -1,8 +1,8 @@
 name: TEST_SLOT
 
 on:
-  #schedule:
-    #- cron:  '*/10 05-22 * * *'
+  schedule:
+    - cron:  '*/30 05-22 * * *'
   workflow_dispatch:
 
 env:
