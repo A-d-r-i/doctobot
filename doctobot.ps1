@@ -26,18 +26,19 @@ Move-Item -Path "$adress/availabilities.json" -Destination "." -force
 
 $slot = Get-Content "./availabilities.json" -Encoding UTF8 | ConvertFrom-Json
 $nextslot = $slot.next_slot
+$rdv = $slot.slots
 $message = $slot.message
 
 if ( $nextslot -eq $null ) { 
-#echo "Pas de nouveau rdv possible..."
-$tmtext = "Pas de nouveau rdv possible... | $message | $slot"
-$tmtoken = "$env:TELEGRAM"
-$tmchatid = "$env:CHAT_ID"
-Invoke-RestMethod -Uri "https://api.telegram.org/bot$tmtoken/sendMessage?chat_id=$tmchatid&text=$tmtext"
+echo "Pas de nouveau rdv possible... $message $slot"
+#$tmtext = "Pas de nouveau rdv possible... | $message | $rdv"
+#$tmtoken = "$env:TELEGRAM"
+#$tmchatid = "$env:CHAT_ID"
+#Invoke-RestMethod -Uri "https://api.telegram.org/bot$tmtoken/sendMessage?chat_id=$tmchatid&text=$tmtext"
 
 } else { 
 
-$tmtext = "Nouveau rendez-vous possible ! $nextslot"
+$tmtext = "Nouveau rendez-vous possible ! $nextslot | $rdv"
 $tmtoken = "$env:TELEGRAM"
 $tmchatid = "$env:CHAT_ID"
 Invoke-RestMethod -Uri "https://api.telegram.org/bot$tmtoken/sendMessage?chat_id=$tmchatid&text=$tmtext"
