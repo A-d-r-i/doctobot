@@ -1,3 +1,4 @@
+Set-TimeZone -Name 'Romance Standard Time' -PassThru
 $date = Get-Date -Format "yyyy-MM-dd"
 $visit_motive_ids = "6313020"
 $agenda_ids = "931268"
