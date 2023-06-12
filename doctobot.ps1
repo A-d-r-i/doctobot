@@ -40,10 +40,10 @@ $rdv1 = $slot.slots
 If(!$rdv1) 
 { 
   Write-Output "Variable rdv1 vide"
-  $tmtext = "*Nouveau rendez\-vous possible* 👍 \! $nextslot \| [Prendre rendez\-vous](https://www.doctolib.fr/orthodontiste/valence/laurent\-cotton/booking/availabilities?motiveIds[]=6313020)"
+  $tmtext = "*Nouveau rendez\-vous possible* 👍 \! $nextslot \| ⇒ [Prendre rendez\-vous](https://www.doctolib.fr/orthodontiste/valence/laurent\-cotton/booking/availabilities?motiveIds[]=6313020)"
 }else{
   $rdv = $rdv1.ToString("dd/MM/yyy HH:mm")
-  $tmtext = "*Nouveau rendez\-vous possible* 👍 \! $nextslot \| $rdv | [Prendre rendez\-vous](https://www.doctolib.fr/orthodontiste/valence/laurent\-cotton/booking/availabilities?motiveIds[]=6313020)"
+  $tmtext = "*Nouveau rendez\-vous possible* 👍 \! $nextslot \| $rdv | ⇒ [Prendre rendez\-vous](https://www.doctolib.fr/orthodontiste/valence/laurent\-cotton/booking/availabilities?motiveIds[]=6313020)"
 }
 $message = $slot.message
 
