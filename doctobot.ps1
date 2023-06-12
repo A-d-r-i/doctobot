@@ -40,8 +40,10 @@ $rdv1 = $slot.slots
 If(!$rdv1) 
 { 
   Write-Output "Variable rdv1 vide"
+  $tmtext = "Nouveau rendez-vous possible 👍 ! $nextslot | [Prendre rendez-vous](https://www.doctolib.fr/orthodontiste/valence/laurent-cotton/booking/availabilities?telehealth=false&placeId=practice-312173&specialityId=270&motiveIds%5B%5D=6313020)"
 }else{
   $rdv = $rdv1.ToString("dd/MM/yyy HH:mm")
+  $tmtext = "Nouveau rendez-vous possible 👍 ! $nextslot | $rdv | [Prendre rendez-vous](https://www.doctolib.fr/orthodontiste/valence/laurent-cotton/booking/availabilities?telehealth=false&placeId=practice-312173&specialityId=270&motiveIds%5B%5D=6313020)"
 }
 $message = $slot.message
 
@@ -54,7 +56,6 @@ echo "Pas de nouveau rdv possible... $message $slot"
 
 } else { 
 
-$tmtext = "Nouveau rendez-vous possible ! $nextslot | $rdv"
 $tmtoken = "$env:TELEGRAM"
 $tmchatid = "$env:CHAT_ID"
 Invoke-RestMethod -Uri "https://api.telegram.org/bot$tmtoken/sendMessage?chat_id=$tmchatid&text=$tmtext"
