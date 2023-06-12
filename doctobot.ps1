@@ -37,7 +37,7 @@ If(!$nextslot1)
 }
 
 $rdv1 = $slot.slots
-If(!rdv1) 
+If(!$rdv1) 
 { 
   Write-Output "Variable rdv1 vide"
 }else{
