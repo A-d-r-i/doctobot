@@ -27,8 +27,12 @@ Move-Item -Path "$adress/availabilities.json" -Destination "." -force
 #Invoke-WebRequest -Uri "https://www.doctolib.fr/availabilities.json?start_date=$date&visit_motive_ids=$visit_motive_ids&agenda_ids=$agenda_ids&insurance_sector=public&practice_ids=$practice_ids" -OutFile "./download.json"
 
 $slot = Get-Content "./availabilities.json" -Encoding UTF8 | ConvertFrom-Json
-$nextslot = $slot.next_slot
-$rdv = $slot.slots
+
+$nextslot1 = $slot.next_slot
+$nextslot = $nextslot1.ToString("dd/MM/yyy HH:mm")
+
+$rdv1 = $slot.slots
+$rdv = $rdv1.ToString("dd/MM/yyy HH:mm")
 $message = $slot.message
 
 if ( $nextslot -eq $null ) { 
