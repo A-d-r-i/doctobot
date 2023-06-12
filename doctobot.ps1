@@ -29,10 +29,20 @@ Move-Item -Path "$adress/availabilities.json" -Destination "." -force
 $slot = Get-Content "./availabilities.json" -Encoding UTF8 | ConvertFrom-Json
 
 $nextslot1 = $slot.next_slot
-$nextslot = $nextslot1.ToString("dd/MM/yyy HH:mm")
+If(!$nextslot1) 
+{ 
+  Write-Output "Variable nextslot1 vide"
+}else{
+  $nextslot = $nextslot1.ToString("dd/MM/yyy HH:mm")
+}
 
 $rdv1 = $slot.slots
-$rdv = $rdv1.ToString("dd/MM/yyy HH:mm")
+If(!rdv1) 
+{ 
+  Write-Output "Variable rdv1 vide"
+}else{
+  $rdv = $rdv1.ToString("dd/MM/yyy HH:mm")
+}
 $message = $slot.message
 
 if ( $nextslot -eq $null ) { 
